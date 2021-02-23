@@ -4,14 +4,26 @@ declare(strict_types=1);
 
 namespace Pollen\Translation;
 
+use BadMethodCallException;
 use Pollen\Support\Concerns\ConfigBagTrait;
 use Pollen\Support\Concerns\ContainerAwareTrait;
 use Psr\Container\ContainerInterface as Container;
+use Symfony\Component\Translation\Translator as DelegateTranslator;
+use Symfony\Component\Translation\Loader\ArrayLoader;
+use Throwable;
 
+/**
+ * @mixin DelegateTranslator
+ */
 class Translator implements TranslatorInterface
 {
     use ConfigBagTrait;
     use ContainerAwareTrait;
+
+    /**
+     * @var DelegateTranslator
+     */
+    protected $delegateTranslator;
 
     /**
      * @param array $config
@@ -24,5 +36,31 @@ class Translator implements TranslatorInterface
         if (!is_null($container)) {
             $this->setContainer($container);
         }
+
+        $this->delegateTranslator = new DelegateTranslator('fr_FR');
     }
+
+
+    public function __call(string $method, array $arguments)
+    {
+        try {
+            return $this->delegateTranslator->{$method}(...$arguments);
+        } catch (Throwable $e) {
+            throw new BadMethodCallException(
+                sprintf(
+                    'Default Translator method call [%s] throws an exception: %s',
+                    $method,
+                    $e->getMessage()
+                )
+            );
+        }
+    }
+
+    public function addArrayLoader(string $name): TranslatorInterface
+    {
+        $this->addLoader($name, new ArrayLoader());
+
+        return $this;
+    }
+
 }
