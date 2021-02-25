@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Pollen\Translation;
 
 use BadMethodCallException;
-use Pollen\Support\Concerns\ConfigBagTrait;
+use Pollen\Support\Concerns\ConfigBagAwareTrait;
 use Pollen\Support\Concerns\ContainerAwareTrait;
 use Psr\Container\ContainerInterface as Container;
 use Symfony\Component\Translation\Translator as DelegateTranslator;
@@ -17,7 +17,7 @@ use Throwable;
  */
 class Translator implements TranslatorInterface
 {
-    use ConfigBagTrait;
+    use ConfigBagAwareTrait;
     use ContainerAwareTrait;
 
     /**

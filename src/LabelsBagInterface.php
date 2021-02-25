@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Pollen\Translation;
 
 /**
- * @mixin \Pollen\Support\Concerns\ParamsBagTrait
+ * @mixin \Pollen\Support\Concerns\ParamsBagAwareTrait
  */
 interface LabelsBagInterface
 {
