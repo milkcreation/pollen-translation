@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Pollen\Translation;
 
 use BadMethodCallException;
-use Pollen\Support\Concerns\ParamsBagTrait;
+use Pollen\Support\Concerns\ParamsBagAwareTrait;
 use Pollen\Support\Str;
 use Throwable;
 
@@ -14,7 +14,7 @@ use Throwable;
  */
 class LabelsBag implements LabelsBagInterface
 {
-    use ParamsBagTrait;
+    use ParamsBagAwareTrait;
 
     /**
      * Indicateur de gestion du féminin.
