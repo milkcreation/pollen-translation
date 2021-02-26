@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Pollen\Translation;
 
-use BadMethodCallException;
-use Pollen\Support\Concerns\ParamsBagAwareTrait;
+use Pollen\Support\Concerns\ParamsBagDelegateTrait;
 use Pollen\Support\Str;
-use Throwable;
 
-/**
- * @mixin \Pollen\Support\ParamsBag
- */
 class LabelsBag implements LabelsBagInterface
 {
-    use ParamsBagAwareTrait;
+    use ParamsBagDelegateTrait;
 
     /**
      * Indicateur de gestion du féminin.
@@ -39,24 +34,6 @@ class LabelsBag implements LabelsBagInterface
      * @var string
      */
     protected $singular = '';
-
-    /**
-     * @inheritDoc
-     */
-    public function __call(string $method, array $arguments)
-    {
-        try {
-            return $this->params()->{$method}(...$arguments);
-        } catch (Throwable $e) {
-            throw new BadMethodCallException(
-                sprintf(
-                    'LabelsBag method call [%s] throws an exception: %s',
-                    $method,
-                    $e->getMessage()
-                )
-            );
-        }
-    }
 
     /**
      * Création d'une instance.

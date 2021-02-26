@@ -4,21 +4,10 @@ declare(strict_types=1);
 
 namespace Pollen\Translation;
 
-/**
- * @mixin \Pollen\Support\Concerns\ParamsBagAwareTrait
- */
-interface LabelsBagInterface
-{
-    /**
-     * Délégation d'appel des méthodes du ParamBag.
-     *
-     * @param string $method
-     * @param array $arguments
-     *
-     * @return mixed
-     */
-    public function __call(string $method, array $arguments);
+use Pollen\Support\Concerns\ParamsBagDelegateTraitInterface;
 
+interface LabelsBagInterface extends ParamsBagDelegateTraitInterface
+{
     /**
      * Récupération du nom de qualification.
      *
