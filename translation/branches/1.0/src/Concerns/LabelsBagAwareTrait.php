@@ -7,6 +7,9 @@ namespace Pollen\Translation\Concerns;
 use InvalidArgumentException;
 use Pollen\Translation\LabelsBag;
 
+/**
+ * @see \Pollen\Translation\Concerns\LabelsBagAwareTraitInterface
+ */
 trait LabelsBagAwareTrait
 {
     /**
@@ -56,11 +59,10 @@ trait LabelsBagAwareTrait
     /**
      * Traitement de la liste des intitulés.
      *
-     * @return static
+     * @return void
      */
-    public function parseLabels(): self
+    public function parseLabels(): void
     {
-        return $this;
     }
 
     /**
@@ -70,7 +72,7 @@ trait LabelsBagAwareTrait
      *
      * @return static
      */
-    public function setLabels(array $labels): self
+    public function setLabels(array $labels): LabelsBagAwareTrait
     {
         $this->labels($labels);
 
