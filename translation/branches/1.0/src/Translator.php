@@ -34,7 +34,7 @@ class Translator implements TranslatorInterface
     {
         $this->setConfig($config);
 
-        if (!is_null($container)) {
+        if ($container !== null) {
             $this->setContainer($container);
         }
 
