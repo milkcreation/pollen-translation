@@ -47,11 +47,11 @@ class LabelsBag implements LabelsBagInterface
     {
         $self = new static();
 
-        if (!is_null($name)) {
+        if ($name !== null) {
             $self->setName($name);
         }
 
-        $self->params($labels)->parseLabels();
+        $self->set($labels);
 
         if ($self->has('gender')) {
             $self->setGender((bool)$self->pull('gender'));
@@ -64,6 +64,8 @@ class LabelsBag implements LabelsBagInterface
         if ($self->has('singular')) {
             $self->setSingular(lcfirst($self->pull('singular')));
         }
+
+        $self->parse();
 
         return $self;
     }
