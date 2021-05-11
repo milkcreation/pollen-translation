@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Pollen\Translation;
 
-use Pollen\Container\BaseServiceProvider;
+use Pollen\Container\BootableServiceProvider;
 
-class TranslationServiceProvider extends BaseServiceProvider
+class TranslationServiceProvider extends BootableServiceProvider
 {
     /**
      * @inheritDoc
