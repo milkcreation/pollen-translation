@@ -8,7 +8,7 @@
     "http",
     "PSR-7"
   ],
-  "time": "2021-05-11",
+  "time": "2021-06-18",
   "license": "MIT",
   "authors": [
     {
@@ -44,7 +44,8 @@
     }
   },
   "suggest": {
-    "pollen-solutions/container" : "Pollen Container Component - PSR-11 ready Dependencies Injection Container"
+    "pollen-solutions/container" : "Pollen Container Component - PSR-11 ready Dependencies Injection Container",
+    "stichoza/google-translate-php" : "Free Google Translate API PHP Package"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
